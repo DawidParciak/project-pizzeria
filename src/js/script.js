@@ -254,9 +254,6 @@
       if(thisWidget.value > maxValue){
         thisWidget.value = maxValue;
       }
-
-      thisWidget.value = newValue;
-      thisWidget.input.value = thisWidget.value;
     }
 
     initActions(){
