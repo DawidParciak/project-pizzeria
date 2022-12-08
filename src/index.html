@@ -21,7 +21,7 @@
         <div id="cart" class="cart">
           <div class="cart__summary">
             <span class="cart__total-number">0</span>
-            <span class="cart__total-price">Total price: <strong>$0</strong></span>
+            <span class="cart__total-price">Total price: $<strong>0</strong></span>
             <i class="fas fa-chevron-down"></i>
             <i class="fas fa-shopping-cart cart__icon"></i>
           </div>
@@ -30,17 +30,17 @@
               <ul class="cart__order-summary no-spacing">
               </ul>
               <ul class="cart__order-price">
-                <li>
+                <li class="cart__order-subtotal">
                   <span class="cart__order-price-name">Subtotal:</span>
-                  <span class="cart__order-price-sum">$0</span>
+                  <span class="cart__order-price-sum">$<strong>0</strong></span>
                 </li>
-                <li>
+                <li class="cart__order-delivery">
                   <span class="cart__order-price-name">Delivery:</span>
-                  <span class="cart__order-price-sum">$0</span>
+                  <span class="cart__order-price-sum">$<strong>0</strong></span>
                 </li>
-                <li>
+                <li class="cart__order-total">
                   <span class="cart__order-price-name"><strong>Total:</strong></span>
-                  <span class="cart__order-price-sum"><strong>$0</strong></span>
+                  <span class="cart__order-price-sum">$<strong>0</strong></span>
                 </li>
               </ul>
               <div class="cart__order-confirmation">
@@ -57,6 +57,34 @@
 
     <div id="product-list" class="product-list container"></div>
 
+    <script id="template-cart-product" type="text/x-handlebars-template">
+      <li>
+        <div class="widget-amount"> <!-- widget-amount -->
+          <a class="btn-quantity btn-quantity--lt" href="#less"><i class="fas fa-minus"></i></a>
+          <input class="amount" type="text" value="{{ amount }}">
+          <a class="btn-quantity btn-quantity--lt" href="#more"><i class="fas fa-plus"></i></a>
+        </div>
+        <div class="cart__product">
+          <div class="cart__product-header">
+            <span>{{ name }}</span>
+            <span>$<strong class="cart__product-price">{{ price }}</strong></span>
+          </div>
+          <ul class="cart__product-details no-spacing">
+            {{#each params}}
+              <li>
+                <span class="cart__product-details-label">{{ label }}</span>
+                <span>{{#joinValues options}}, {{/joinValues}}</span>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+        <ul class="cart__action-buttons no-spacing">
+          <li><a href="#edit">Edit<i class="fas fa-pencil-alt"></i></a></li>
+          <li><a href="#remove">Remove<i class="fas fa-trash-alt"></i></a></li>
+        </ul>
+      </li>
+    </script>  
+    
     <script id="template-menu-product" type="text/x-handlebars-template">
       <article class="product"> <!-- product -->
 
@@ -115,7 +143,7 @@
                 <div class="widget-amount"> <!-- widget-amount -->
                   <h3 class="product__params-title">Select quantity</h3>
                   <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
-                  <input type="text" name="amount">
+                  <input type="text" class="amount">
                   <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
                 </div>
                 <p class="product__total-price">
