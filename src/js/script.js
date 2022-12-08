@@ -326,24 +326,20 @@
 
   class Cart{
     constructor(element){
-      const thisCart = this;
+      this.products = [];
 
-      thisCart.products = [];
+      this.getElements(element);
+      this.initActions();
 
-      thisCart.getElements(element);
-      thisCart.initActions();
-
-      console.log('new Cart', thisCart);
+      console.log('new Cart', this);
     }
 
     getElements(element){
-      const thisCart = this;
+      this.dom ={};
 
-      thisCart.dom ={};
+      this.dom.wrapper = element;
 
-      thisCart.dom.wrapper = element;
-
-      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      this.dom.toggleTrigger = this.dom.wrapper.querySelector(select.cart.toggleTrigger);
     }
 
     initActions(){
