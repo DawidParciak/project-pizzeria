@@ -1,17 +1,17 @@
 .product-list {
-  padding: ($base-size * 3) 0;
+  padding: calc($base-size * 3) 0;
 }
 
 .product {
-  margin: ($base-size / 2) 0;
-  padding: ($base-size * 6) ($base-size * 4);
+  margin: calc($base-size / 2) 0;
+  padding: calc($base-size * 6) calc($base-size * 4);
   background: $color-light;
   border-bottom: 1px solid lighten($color-dark, 70%);
   border-radius: $radius;
 
   &__header {
     @include flex(row, center, space-between);
-    margin-bottom: ($base-size * 2);
+    margin-bottom: calc($base-size * 2);
     font-family: $font-header;
     font-size: 22px;
     cursor: pointer;
@@ -29,7 +29,7 @@
     color: $color-main;
     right: (-$base-size * 5);
     top: $base-size;
-    font-size: ($base-size * 1.5);
+    font-size: calc($base-size * 1.5);
     transition: $transition;
   }
 
@@ -48,7 +48,7 @@
   }
 
   &__params {
-    margin: 0 0 ($base-size * 3) 0;
+    margin: 0 0 calc($base-size * 3) 0;
     padding: 0;
     list-style-type: none;
   }
@@ -57,7 +57,7 @@
     font-size: 14px;
     font-weight: $font-bold;
     text-transform: uppercase;
-    margin: ($base-size * 2) 0;
+    margin: calc($base-size * 2) 0;
   }
 
   &__order {
@@ -120,7 +120,7 @@
     width: 30px;
     height: 30px;
     text-align: center;
-    margin: 0 ($base-size / 2);
+    margin: 0 calc($base-size / 2);
     padding: 0;
   }
 
