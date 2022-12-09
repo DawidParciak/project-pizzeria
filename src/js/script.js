@@ -99,8 +99,6 @@
       thisProduct.initOrderForm();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
-
-      //console.log('New product:', thisProduct);
     }
 
     renderInMenu(){
@@ -160,7 +158,6 @@
 
     initOrderForm(){
       const thisProduct = this;
-      //console.log(this.initOrderForm);
 
       thisProduct.form.addEventListener('submit', function(event){
         event.preventDefault();
@@ -183,11 +180,9 @@
 
     processOrder(){
       const thisProduct = this;
-      //console.log('processOrder:', thisProduct);
 
       /* covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']} */
       const formData = utils.serializeFormToObject(thisProduct.form);
-      //console.log('formData', formData);
 
       /* set price to default price */
       let price = thisProduct.data.price;
@@ -197,7 +192,6 @@
 
         /* determine param value, e.g. paramId = 'toppings', param = {label: 'Toppings', type: 'checkboxes'...} */
         const param = thisProduct.data.params[paramId];
-        //console.log(paramId, param);
 
         /* for every option in this category */
         for(let optionId in param.options){
@@ -206,7 +200,6 @@
           const option = param.options[optionId];
           const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
           const optionSelected = formData [paramId] && formData[paramId].includes(optionId);
-          //console.log(optionId, option);
 
           /* check if there is param with a name of paramId in formData and if it includes optionId */
           if (optionSelected){
@@ -387,8 +380,6 @@
 
       this.getElements(element);
       this.initActions();
-
-      console.log('new Cart', this);
     }
 
     getElements(element){
@@ -410,8 +401,6 @@
     }
 
     add(menuProduct){
-      //const thisCart = this;
-
       const generatedHTML = templates.cartProduct(menuProduct);
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
 
@@ -433,8 +422,6 @@
 
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
-
-      console.log(thisCartProduct);
     }
 
     getElements(element){
@@ -448,8 +435,6 @@
       };
 
       thisCartProduct.dom.wrapper = element;
-
-
     }
 
     initAmountWidget(){
@@ -468,8 +453,6 @@
   const app = {
     initMenu: function(){
       const thisApp = this;
-
-      console.log('thisApp.data:', thisApp.data);
 
       for(let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
