@@ -383,13 +383,18 @@
     }
 
     getElements(element){
-      this.dom ={};
+      const thisCart = this;
 
-      this.dom.wrapper = element;
+      thisCart.dom ={};
 
-      this.dom.toggleTrigger = this.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.wrapper = element;
 
-      this.dom.productList = this.dom.wrapper.querySelector(select.cart.productList);
+      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
+      thisCart.dom.deliveryFee = thisCart.dom.wrapper.querySelector(select.cart.deliveryFee);
+      thisCart.dom.subtotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subtotalPrice);
+      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(select.cart.totalPrice);
+      thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
     }
 
     initActions(){
@@ -406,6 +411,41 @@
 
       this.dom.productList.appendChild(generatedDOM);
       this.products.push(new CartProduct(menuProduct, generatedDOM));
+
+      this.update();
+    }
+
+    update(){
+      const thisCart = this;
+
+      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
+
+      thisCart.totalNumber = 0;
+      thisCart.deliveryFee = 0;
+
+      for(let product of thisCart.products){
+        thisCart.totalNumber += product.amount;
+
+        thisCart.subtotalPrice += product.newPrice;
+      }
+
+      // if (thisCart.totalNumber > 0){
+      //   thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+      // } else {
+      //   thisCart.deliveryFee = 0;
+      //   console.log('totalprice', thisCart.totalPrice);
+      // }
+
+      thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+
+      thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
+      thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
+      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+      thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
+      
+      for (let price of thisCart.dom.totalPrice) {
+        price.innerHTML = thisCart.totalPrice;
+      }
     }
   }
 
