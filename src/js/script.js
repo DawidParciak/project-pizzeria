@@ -266,7 +266,7 @@
         params: thisProduct.prepareCartProductParams(),
       };
 
-      return (productSummary);
+      return productSummary;
     }
 
     prepareCartProductParams(){
@@ -410,6 +410,10 @@
       thisCart.dom.productList.addEventListener('updated', function () {
         thisCart.update();
       });
+
+      thisCart.dom.productList.addEventListener('remove', function(event){
+        thisCart.remove(event.detail.cartProduct);
+      });
     }
 
     add(menuProduct){
@@ -455,6 +459,17 @@
       thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
       thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
     }
+
+    remove(event){
+      const thisCart = this;
+
+      const removedItem = thisCart.products.indexOf(event);
+      thisCart.products.splice(removedItem, 1);
+
+      event.dom.wrapper.remove();
+
+      thisCart.update();
+    }
   }
 
   class CartProduct{
@@ -470,6 +485,7 @@
 
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
+      thisCartProduct.initActions();
     }
 
     getElements(element){
@@ -494,6 +510,32 @@
         thisCartProduct.amount = thisCartProduct.amountWidget.value;
         thisCartProduct.newPrice = thisCartProduct.priceSingle * thisCartProduct.amount;
         thisCartProduct.dom.price.innerHTML = thisCartProduct.newPrice;
+      });
+    }
+
+    remove(){
+      const thisCartProduct = this;
+
+      const event = new CustomEvent('remove',{
+        bubbles: true,
+        detail: {
+          cartProduct: thisCartProduct,
+        },
+      });
+
+      thisCartProduct.dom.wrapper.dispatchEvent(event);
+    }
+
+    initActions(){
+      const thisCartProduct = this;
+
+      thisCartProduct.dom.edit.addEventListener('click', function(event){
+        event.preventDefault();
+      });
+
+      thisCartProduct.dom.remove.addEventListener('click', function(event){
+        event.preventDefault();
+        thisCartProduct.remove(event);
       });
     }
   }
@@ -522,11 +564,6 @@
 
     init: function(){
       const thisApp = this;
-      //console.log('*** App starting ***');
-      //console.log('thisApp:', thisApp);
-      //console.log('classNames:', classNames);
-      //console.log('settings:', settings);
-      //console.log('templates:', templates);
 
       thisApp.initData(),
       thisApp.initMenu(),
