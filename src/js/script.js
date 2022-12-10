@@ -368,7 +368,9 @@
     announce(){
       const thisWidget = this;
 
-      const event = new Event ('updated');
+      const event = new Event ('updated', {
+        bubbles: true
+      });
       thisWidget.element.dispatchEvent(event);
     }
 
@@ -376,10 +378,11 @@
 
   class Cart{
     constructor(element){
-      this.products = [];
+      const thisCart = this;
+      thisCart.products = [];
 
-      this.getElements(element);
-      this.initActions();
+      thisCart.getElements(element);
+      thisCart.initActions();
     }
 
     getElements(element){
@@ -393,7 +396,7 @@
       thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
       thisCart.dom.deliveryFee = thisCart.dom.wrapper.querySelector(select.cart.deliveryFee);
       thisCart.dom.subtotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subtotalPrice);
-      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(select.cart.totalPrice);
+      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(select.cart.totalPrice);
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
     }
 
@@ -403,16 +406,21 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function(){
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       }); 
+
+      thisCart.dom.productList.addEventListener('updated', function () {
+        thisCart.update();
+      });
     }
 
     add(menuProduct){
+      const thisCart = this;
       const generatedHTML = templates.cartProduct(menuProduct);
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
 
-      this.dom.productList.appendChild(generatedDOM);
-      this.products.push(new CartProduct(menuProduct, generatedDOM));
+      thisCart.dom.productList.appendChild(generatedDOM);
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
 
-      this.update();
+      thisCart.update();
     }
 
     update(){
@@ -421,31 +429,31 @@
       thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
 
       thisCart.totalNumber = 0;
-      thisCart.deliveryFee = 0;
+      thisCart.subtotalPrice = 0;
 
-      for(let product of thisCart.products){
-        thisCart.totalNumber += product.amount;
-
-        thisCart.subtotalPrice += product.newPrice;
+      for(let cartProduct of thisCart.products){
+        thisCart.totalNumber += cartProduct.amount;
+        thisCart.subtotalPrice += cartProduct.newPrice || cartProduct.price;
       }
 
-      // if (thisCart.totalNumber > 0){
-      //   thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
-      // } else {
-      //   thisCart.deliveryFee = 0;
-      //   console.log('totalprice', thisCart.totalPrice);
-      // }
-
-      thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+      if(thisCart.totalNumber != 0){
+        thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+      } else {
+        thisCart.subtotalPrice = 0;
+        thisCart.deliveryFee = 0;
+        thisCart.totalPrice = 0;
+      }
 
       thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
-      thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
-      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
-      thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
-      
-      for (let price of thisCart.dom.totalPrice) {
-        price.innerHTML = thisCart.totalPrice;
+
+      for (let totalPrice of thisCart.dom.totalPrice) {
+        totalPrice.innerHTML = thisCart.totalPrice;
       }
+
+      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+      thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
+      thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
+      thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
     }
   }
 
@@ -514,11 +522,11 @@
 
     init: function(){
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
+      //console.log('*** App starting ***');
+      //console.log('thisApp:', thisApp);
+      //console.log('classNames:', classNames);
+      //console.log('settings:', settings);
+      //console.log('templates:', templates);
 
       thisApp.initData(),
       thisApp.initMenu(),
