@@ -41,7 +41,7 @@
   bottom: ($base-size * -8);
 
   a {
-    @extend .h2;
+    @extend.h2;
     color: $color-main;
     text-decoration: none;
     margin-right: ($base-size * 2);
