@@ -1,6 +1,6 @@
 import { select, settings, templates } from '../settings.js';
 import { utils } from '../utils.js';
-import AmountWidget from '../components/AmountWidget.js';
+import AmountWidget from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
 
@@ -36,12 +36,12 @@ class Booking{
     };
 
     const urls = {
-      booking:       settings.db.url + '/' + settings.db.booking 
-                                     + '?' + params.booking.join('&'),
-      eventsCurrent: settings.db.url + '/' + settings.db.event   
-                                     + '?' + params.eventsCurrent.join('&'),
-      eventsRepeat:  settings.db.url + '/' + settings.db.event   
-                                     + '?' + params.eventsRepeat.join('&'),
+      booking:       settings.db.url + '/' + settings.db.bookings 
+                                      + '?' + params.booking.join('&'),
+      eventsCurrent: settings.db.url + '/' + settings.db.events   
+                                      + '?' + params.eventsCurrent.join('&'),
+      eventsRepeat:  settings.db.url + '/' + settings.db.events   
+                                      + '?' + params.eventsRepeat.join('&'),
     };
 
     Promise.all([
@@ -60,9 +60,9 @@ class Booking{
         ]);
       })
       .then(function(bookings, eventsCurrent, eventsRepeat){
-        console.log(bookings);
-        console.log(eventsCurrent);
-        console.log(eventsRepeat);
+        // console.log(bookings);
+        // console.log(eventsCurrent);
+        // console.log(eventsRepeat);
       });
   }
 
@@ -91,7 +91,7 @@ class Booking{
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
 
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
-    thisBooking.datePicker = new HourPicker(thisBooking.dom.hourPicker);
+    thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
   }
 
 }
