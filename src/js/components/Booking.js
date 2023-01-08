@@ -60,10 +60,6 @@ class Booking{
         ]);
       })
       .then(function(bookings, eventsCurrent, eventsRepeat){
-        // console.log(bookings);
-        // console.log(eventsCurrent);
-        // console.log(eventsRepeat);
-
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
       });
   }
@@ -164,8 +160,6 @@ class Booking{
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
-    
-    //thisBooking.dom.wrapper = generatedHTML;
   }
 
   initWidgets(){
