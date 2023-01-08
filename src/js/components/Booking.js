@@ -59,7 +59,7 @@ class Booking{
           eventsRepeatResponse.json(),
         ]);
       })
-      .then(function(bookings, eventsCurrent, eventsRepeat){
+      .then(function([bookings, eventsCurrent, eventsRepeat]){
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
       });
   }
