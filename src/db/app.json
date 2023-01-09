@@ -257,16 +257,6 @@
         "starters": ["lemonWater"]
       }
     ],
-    "bookings": [
-      {
-         "id": 1,
-         "date": "2023-01-08",
-         "hour": "12:30",
-         "table": 1,
-         "duration": 4,
-         "ppl": 3,
-         "starters": []
-      }
-    ]
+    "bookings": []
  }
  
