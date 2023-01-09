@@ -11,6 +11,7 @@ class Booking{
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
+    thisBooking.selectedTable = '';
   }
 
   getData(){
@@ -87,7 +88,6 @@ class Booking{
         }
       }
     }
-    console.log('thisBooking.booked:', thisBooking.booked);
 
     thisBooking.updateDOM();
   }
@@ -113,6 +113,8 @@ class Booking{
 
   updateDOM(){
     const thisBooking = this;
+
+    thisBooking.unselectTables();
 
     thisBooking.date = thisBooking.datePicker.value;
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
@@ -160,7 +162,44 @@ class Booking{
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+
+    thisBooking.dom.floor = thisBooking.dom.wrapper.querySelectorAll(select.booking.floor);
   }
+
+  initTables(clickedElement){
+    const thisBooking = this;
+
+    const tableId = clickedElement.getAttribute(settings.booking.tableIdAttribute);
+    const table = clickedElement.classList.value.includes('table');
+    const bookedTable =  clickedElement.classList.value.includes(classNames.booking.tableBooked);
+
+    if((tableId && table) && bookedTable){
+      alert('Table already booked');
+    }
+    
+    if((tableId && table) && !bookedTable){
+
+      if(clickedElement.classList.value.includes(classNames.booking.tableSelected)){
+        thisBooking.unselectTables();
+        thisBooking.selectedTable = '';
+
+      } else{
+        thisBooking.unselectTables();
+        clickedElement.classList.add(classNames.booking.tableSelected);
+        thisBooking.selectedTable = tableId;
+      }
+    }
+    console.log('selectedTable: ', this.selectedTable);
+  }
+
+  unselectTables(){
+    const thisBooking = this;
+    
+    for(let table of thisBooking.dom.tables){
+      table.classList.remove(classNames.booking.tableSelected);
+    }
+  }
+
 
   initWidgets(){
     const thisBooking = this;
@@ -173,6 +212,10 @@ class Booking{
 
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
+    });
+
+    thisBooking.dom.wrapper.addEventListener('click', function(){
+      thisBooking.initTables(event.target);
     });
   }
 }
