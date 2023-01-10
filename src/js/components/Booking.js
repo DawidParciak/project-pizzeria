@@ -96,7 +96,7 @@ class Booking{
   makeBooked(date, hour, duration, table){
     const thisBooking = this;
 
-    if(typeof thisBooking.booked[date] == 'undefined'){
+    if(thisBooking.booked[date] == undefined){
       thisBooking.booked[date] = {};
     }
 
@@ -104,7 +104,7 @@ class Booking{
 
     for(let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5){
 
-      if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
+      if(thisBooking.booked[date][hourBlock] == undefined){
         thisBooking.booked[date][hourBlock] = [];
       }
   
@@ -121,9 +121,9 @@ class Booking{
     let allAvailable = false;
 
     if(
-      typeof thisBooking.booked[thisBooking.date] == 'undefined'
+      thisBooking.booked[thisBooking.date] == undefined
       ||
-      typeof thisBooking.booked[thisBooking.date][thisBooking.hour] == 'undefined'
+      thisBooking.booked[thisBooking.date][thisBooking.hour] == undefined
     ){
       allAvailable = true;
     }
@@ -168,26 +168,27 @@ class Booking{
     thisBooking.dom.form = thisBooking.dom.wrapper.querySelector(select.booking.bookingSubmit);
   }
 
-  initTables(clickedElement){
+  initTables(event){
     const thisBooking = this;
 
-    const tableId = clickedElement.getAttribute(settings.booking.tableIdAttribute);
-    const table = clickedElement.classList.value.includes('table');
-    const bookedTable =  clickedElement.classList.value.includes(classNames.booking.tableBooked);
+    const tableId = event.getAttribute(settings.booking.tableIdAttribute);
+    const isTable = tableId && event.classList.value.includes(classNames.booking.table);
+    const isTableBooked =  event.classList.value.includes(classNames.booking.tableBooked);
+    const isTableSelected = event.classList.value.includes(classNames.booking.tableSelected);
 
-    if((tableId && table) && bookedTable){
+    if(isTable && isTableBooked){
       alert('Table already booked');
     }
     
-    if((tableId && table) && !bookedTable){
+    if(isTable && !isTableBooked){
 
-      if(clickedElement.classList.value.includes(classNames.booking.tableSelected)){
+      if(isTableSelected){
         thisBooking.unselectTables();
         thisBooking.selectedTable = '';
 
       } else{
         thisBooking.unselectTables();
-        clickedElement.classList.add(classNames.booking.tableSelected);
+        event.classList.add(classNames.booking.tableSelected);
         thisBooking.selectedTable = tableId;
       }
     }
@@ -207,7 +208,6 @@ class Booking{
 
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
-
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
 
