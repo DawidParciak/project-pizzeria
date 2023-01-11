@@ -1,0 +1,17 @@
+.navigation {
+  color: $color-light;
+  img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+  }
+}
+
+.opening-hour {
+  height: 120px;
+  background-color: $color-main;
+}
+
+.home-header {
+  background-color: $color-light;
+}
