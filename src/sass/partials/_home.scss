@@ -53,9 +53,41 @@
   .opinion-title {
     font-weight: $font-bold;
   }
-  
+
   .opinion-author {
     font-style: italic;
   }
 }
- 
+
+.gallery {
+  img {
+    height: 200px;
+  }
+
+  .icons {
+    color: $color-light;
+    font-size: 0;
+    transition: 1s;
+
+    i {
+      padding: 5px;
+    }
+  }
+}
+
+.gallery .card:hover {
+  .icons {
+    color: $color-main;
+    font-size: ($base-size * 2);
+  }
+
+  img {
+    filter: brightness(50%);
+  }
+}
+
+.instagram a {
+  color: $color-main;
+  font-family: $font-text;
+  font-size: ($base-size * 1.2);
+}
