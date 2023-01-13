@@ -217,7 +217,6 @@ class Booking{
     });
 
     thisBooking.dom.floor.addEventListener('click', function(event){
-      console.log('here');
       thisBooking.initTables(event.target);
     });
 
