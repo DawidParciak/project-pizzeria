@@ -102,13 +102,17 @@
 
 .gallery .card:hover {
   .icons {
-    color: $color-main;
     font-size: ($base-size * 2);
   }
 
   img {
     filter: brightness(50%);
   }
+}
+
+.gallery .card .icons i:hover {
+  color: $color-main;
+  cursor: pointer;
 }
 
 .instagram a {
