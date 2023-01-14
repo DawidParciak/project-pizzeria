@@ -16,7 +16,6 @@ class Home{
     thisHome.dom = {};
     thisHome.dom.wrapper = element;
     thisHome.dom.wrapper.innerHTML = generatedHTML;
-
   }
   initPages(){
     const thisHome = this;
