@@ -55,6 +55,9 @@ export const select = {
   nav: {
     links: '.main-nav a',
   },
+  home: {
+    links: '.home-nav a',
+  },
   cart: {
     productList: '.cart__order-summary',
     toggleTrigger: '.cart__summary',

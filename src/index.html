@@ -109,23 +109,25 @@
       <div class="navigation container pb-5">
         <div class="row">
 
-          <div class="col-6 p-0">
-            <a href="#booking">
-              <div class="card position-relative d-flex justify-content-center mb-1">
-                <img src="images/assets/pizza-1.jpg" class="img-fluid rounded">
-                <div class="card-body position-absolute align-self-center">
-                  <p class="box-header move">ORDER ONLINE</p>
+          <div class="col-md-6 p-0 home-nav">
+            <a href="#order">
+              <div class="card position-relative d-flex justify-content-center mb-2 me-1 border-0">
+                <img src="images/assets/pizza-1.jpg" class="img-fluid rounded  object-fit-cover" alt="order image" title="order online">
+                <div class="move card-body position-absolute align-self-center">
+                  <p class="box-header">Order online</p>
+                  <p class="box-description">Delicious food deliviered to your door</p>
                 </div>
               </div>
             </a>
           </div>
 
-          <div class="col-6 p-0">
-            <a href="#/booking">
-              <div class="card position-relative d-flex justify-content-center mb-1">
-                <img src="images/assets/pizza-2.jpg" class="img-fluid rounded">
-                <div class="card-body position-absolute align-self-center">
-                  <p class="box-header move">BOOK A TABLE</p>
+          <div class="col-md-6 p-0 home-nav">
+            <a href="#booking">
+              <div class="card position-relative d-flex justify-content-center mb-2 me-1 border-0">
+                <img src="images/assets/pizza-2.jpg" class="img-fluid rounded  object-fit-cover" alt="booking image" title="book a table">
+                <div class="move card-body position-absolute align-self-center">
+                  <p class="box-header">Book a table</p>
+                  <p class="box-description">Delicious food in a beautiful restaurant</p>
                 </div>
               </div>
             </a>
@@ -134,8 +136,8 @@
           <div class="col-12 px-0">
             <div class="card position-relative align-items-center px-0 rounded opening-hour border-0">
               <div class="card-body position-absolute d-flex flex-column pt-4">
-                <p class="box-header d-flex ">OPENING HOURS:</p>
-                <p class="hours">TUE-SUN, 12PM-12AM</p>
+                <p class="hours-header d-flex ">Opening-hours:</p>
+                <p class="hours">Tue-Sun, 12pm-12am</p>
               </div>
             </div>
           </div>
@@ -145,36 +147,59 @@
 
       <div class="opinions container pt-5 pb-5 px-2">
         <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": true, "prevNextButtons": false }'>
+
           <div class="carousel-cell row d-flex justify-content-between">
-            <div class="col-4 p-0">
-              <img class="img-fluid rounded" src="images/assets/pizza-3.jpg" alt="pizza-3" title="pizza-3">
+            <div class="col-sm-4 p-0">
+              <img class="img-fluid rounded" src="images/assets/pizza-3.jpg" alt="pizza-3.jpg" title="pizza-3">
             </div>
-            <div class="opinion col-7">
-              <p class="opinion-title">AMAZING SERVICE!</p>
+            <div class="opinion col-sm-7">
+              <p class="opinion-title">Amazing service!</p>
               <p class="opinion-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus tempor odio at gravida. Curabitur faucibus quis ipsum vel porta.</p>
               <p class="opinion-author">- Margaret Osborne</p>
             </div>
           </div>
 
           <div class="carousel-cell row d-flex justify-content-between">
-            <div class="col-4 p-0">
-              <img class="img-fluid rounded" src="images/assets/pizza-6.jpg" alt="pizza-6" title="pizza-6">
+            <div class="col-sm-4 p-0">
+              <img class="img-fluid rounded" src="images/assets/pizza-6.jpg" alt="pizza-6.jpg" title="pizza-6">
             </div>
-            <div class="opinion col-7">
-              <p class="opinion-title">GREAT VENUE!</p>
+            <div class="opinion col-sm-7">
+              <p class="opinion-title">Great venue!</p>
               <p class="opinion-text">Vestibulum eget odio vitae magna lacinia feugiat. Ut consectetur sapien fermentum, laoreet erat ac, pellentesque augue.</p>
               <p class="opinion-author">- David Beckham</p>
             </div>
           </div>
 
           <div class="carousel-cell row d-flex justify-content-between">
-            <div class="col-4 p-0">
-              <img class="img-fluid rounded" src="images/assets/pizza-4.jpg" alt="pizza-4" title="pizza-4">
+            <div class="col-sm-4 p-0">
+              <img class="img-fluid rounded" src="images/assets/pizza-4.jpg" alt="pizza-4.jpg" title="pizza-4">
             </div>
-            <div class="opinion col-7">
-              <p class="opinion-title">GOOD SNACKS!</p>
+            <div class="opinion col-sm-7">
+              <p class="opinion-title">Good snacks!</p>
               <p class="opinion-text">Ut fringilla tempor nulla at feugiat. Suspendisse et convallis eros, ut egestas nulla. Cras fringilla augue justo, eu facilisis odio iaculis eu.</p>
               <p class="opinion-author">- Daniel Craig</p>
+            </div>
+          </div>
+
+          <div class="carousel-cell row d-flex justify-content-between">
+            <div class="col-sm-4 p-0">
+              <img class="img-fluid rounded" src="images/assets/pizza-5.jpg" alt="pizza-5.jpg" title="pizza-5">
+            </div>
+            <div class="opinion col-sm-7">
+              <p class="opinion-title">10/10!</p>
+              <p class="opinion-text">Suspendisse in nunc in augue varius pretium. Mauris pulvinar quam sit amet est iaculis, ultrices mattis dui accumsan. Aliquam ut enim ex.</p>
+              <p class="opinion-author">- Maryla Rodowicz</p>
+            </div>
+          </div>
+
+          <div class="carousel-cell row d-flex justify-content-between">
+            <div class="col-sm-4 p-0">
+              <img class="img-fluid rounded" src="images/assets/pizza-10.jpg" alt="pizza-10.jpg" title="pizza-10">
+            </div>
+            <div class="opinion col-sm-7">
+              <p class="opinion-title">Fu**ing delicious!</p>
+              <p class="opinion-text">Vestibulum eget pellentesque leo, ut volutpat mauris. Cras eleifend justo non orci aliquet, vitae eleifend nisi rutrum. Donec in nulla mauris.</p>
+              <p class="opinion-author">- Magda Gessler</p>
             </div>
           </div>
         </div>
@@ -182,8 +207,9 @@
 
       <div class="gallery container pt-5 pb-4 px-2">
         <div class="row">
-          <div class="col-4 p-0">
-            <div class="card image position-relative d-flex justify-content-center m-1">
+
+          <div class="col-md-4 p-0">
+            <div class="card image position-relative d-flex justify-content-center m-1 border-0">
               <img class="rounded object-fit-cover " src="images/assets/pizza-4.jpg" alt="pizza-4" title="pizza-4">
               <div class="icons card-body position-absolute align-self-center">
                 <i class="fa-solid fa-heart"></i>
@@ -192,8 +218,8 @@
             </div>
           </div>
 
-          <div class="col-4 p-0">
-            <div class="card image position-relative d-flex justify-content-center m-1">
+          <div class="col-md-4 p-0">
+            <div class="card image position-relative d-flex justify-content-center m-1 border-0">
               <img class="rounded object-fit-cover" src="images/assets/pizza-5.jpg" alt="pizza-5" title="pizza-5">
               <div class="icons card-body position-absolute align-self-center">
                 <i class="fa-solid fa-heart"></i>
@@ -202,8 +228,8 @@
             </div>
           </div>
 
-          <div class="col-4 p-0">
-            <div class="card image position-relative d-flex justify-content-center m-1">
+          <div class="col-md-4 p-0">
+            <div class="card image position-relative d-flex justify-content-center m-1 border-0">
               <img class="rounded object-fit-cover" src="images/assets/pizza-6.jpg" alt="pizza-6" title="pizza-6">
               <div class="icons card-body position-absolute align-self-center">
                 <i class="fa-solid fa-heart"></i>
@@ -212,8 +238,8 @@
             </div>
           </div>
 
-          <div class="col-4 p-0">
-            <div class="card image position-relative d-flex justify-content-center m-1">
+          <div class="col-md-4 p-0">
+            <div class="card image position-relative d-flex justify-content-center m-1 border-0">
               <img class="rounded object-fit-cover" src="images/assets/pizza-7.jpg" alt="pizza-7" title="pizza-7">
               <div class="icons card-body position-absolute align-self-center">
                 <i class="fa-solid fa-heart"></i>
@@ -222,8 +248,8 @@
             </div>
           </div>
 
-          <div class="col-4 p-0">
-            <div class="card image position-relative d-flex justify-content-center m-1">
+          <div class="col-md-4 p-0">
+            <div class="card image position-relative d-flex justify-content-center m-1 border-0">
               <img class="rounded object-fit-cover" src="images/assets/pizza-8.jpg" alt="pizza-8" title="pizza-8">
               <div class="icons card-body position-absolute align-self-center">
                 <i class="fa-solid fa-heart"></i>
@@ -232,8 +258,8 @@
             </div>
           </div>
 
-          <div class="col-4 p-0">
-            <div class="card image position-relative d-flex justify-content-center m-1">
+          <div class="col-md-4 p-0">
+            <div class="card image position-relative d-flex justify-content-center m-1 border-0">
               <img class="rounded object-fit-cover" src="images/assets/pizza-9.jpg" alt="pizza-9" title="pizza-9">
               <div class="icons card-body position-absolute align-self-center">
                 <i class="fa-solid fa-heart"></i>
@@ -246,7 +272,7 @@
       </div>
 
       <div class="instagram container px-0">
-        <a href="instagram.com" target="_blank">
+        <a href="https://www.instagram.com/" target="_blank">
           View more on Instagram
         </a>
       </div>

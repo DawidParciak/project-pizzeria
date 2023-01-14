@@ -12,7 +12,6 @@
   img {
     width: 100%;
     height: 120px;
-    object-fit: cover;
   }
 }
 
@@ -27,7 +26,29 @@
     font-size: ($base-size * 2);
     font-weight: $font-bold;
     color: $color-light;
+    text-transform: uppercase;
     margin: 0;
+    text-align: center;
+    transition: $transition;
+    transform: translate(0, 50%);
+  }
+
+  .hours-header {
+    font-family: $font-header;
+    font-size: ($base-size * 2);
+    font-weight: $font-bold;
+    color: $color-light;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+  }
+
+  .box-description {
+    font-family: $font-header;
+    color: $color-light;
+    text-align: center;
+    transition: $transition;
+    transform: translate(0, 250%);
   }
 
   .hours {
@@ -35,14 +56,17 @@
     font-size: ($base-size * 1.2);
     font-weight: $font-light;
     text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.navigation .row .card:hover {
+  .move .box-header {
+    transform: translate(0, -5%);
   }
 
-  .move {
-    transition: 0.5s;
-  }
-
-  .move:hover {
-    transform: translate(0, -10px);
+  .move .box-description {
+    transform: translate(0, 50%);
   }
 }
 
@@ -52,6 +76,7 @@
 
   .opinion-title {
     font-weight: $font-bold;
+    text-transform: uppercase;
   }
 
   .opinion-author {
@@ -67,7 +92,7 @@
   .icons {
     color: $color-light;
     font-size: 0;
-    transition: 1s;
+    transition: $transition;
 
     i {
       padding: 5px;
